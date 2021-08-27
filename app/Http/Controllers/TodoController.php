@@ -21,10 +21,8 @@ class TodoController extends Controller
     {
        $param =[
            'content' => $request->content,
-           'created_at' => $request->created_at,
-           'updated_at' => $request->updated_at,
        ];
-       DB::insert('insert into todos(content, created_at, updated_at) values (:content, :created_at, :updated_at)', $param);
+       DB::insert('insert into todos(content,) values (:content)', $param);
        return redirect('/');
     }
 
@@ -39,11 +37,9 @@ class TodoController extends Controller
     {
         $param = [
             'id' => $request->id,
-            'content' => $request->content,
-            'created_at' => $request->created_at,
-            'updated_at' => $request->updated_at,
+            'content' => $request->content
         ];
-        DB::update('update todos set content=:content, created_at=:created_at, updated_at=:updated_at where id=:id', $param);
+        DB::update('update todos set content=:content where id=:id', $param);
         return redirect('/');
     }
 
