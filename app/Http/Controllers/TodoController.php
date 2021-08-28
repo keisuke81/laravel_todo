@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Todo;
 
 class TodoController extends Controller
 {
@@ -12,6 +13,12 @@ class TodoController extends Controller
         $items = DB::select('select * from todos');
         return view('index',['items' => $items]);
     }
+
+    public function find()
+    {
+        return view('find', ['input' => '']);
+    }
+
 
     public function add()
     {
@@ -28,18 +35,16 @@ class TodoController extends Controller
 
     public function edit(Request $request)
     {
-        $param = ['id' => $request->id];
-        $item = DB::select('select * from todos where id = :id', $param);
-        return view('edit', ['form' => $item[0]]);
+        $form = Todo::find($request->id);
+        return view('edit', ['form' => $form]);
     }
 
     public function update(Request $request)
     {
-        $param = [
-            'id' => $request->id,
-            'content' => $request->content
-        ];
-        DB::update('update todos set content=:content where id=:id', $param);
+        $this->validate($request, Todo::$rules);
+        $form = $request->all();
+        unset($form['_token']);
+        Todo::where('id', $request->id)->update($form);
         return redirect('/');
     }
 
