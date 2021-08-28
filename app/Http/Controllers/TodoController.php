@@ -22,7 +22,7 @@ class TodoController extends Controller
        $param =[
            'content' => $request->content,
        ];
-       DB::insert('insert into todos(content,) values (:content)', $param);
+       DB::insert('insert into todos(content) values (:content)', $param);
        return redirect('/');
     }
 

@@ -28,7 +28,7 @@
                   {{$item->created_at}}
                 </td>
                 <td>
-                  <input type="text" class="input-update" value="" name="content">
+                  <input type="text" class="input-update" value="{{$item->content}}" name="content">
                 </td>
                 <td>
                   <button class="button-update">更新</button>

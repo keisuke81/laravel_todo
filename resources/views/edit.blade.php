@@ -22,21 +22,22 @@
               @foreach ($items as $item)
 
               @csrf
-              <tr>
-                <td>
-                  {{$item->created_at}}
-                </td>
-                <td>
-                  <input type="text" class="input-update" value="" name="content">
-                </td>
-                <td>
-                  <button class="button-update">更新</button>
-                </td>
-                <td>
-                  <button class="button-delete">削除</button>
-                  </form>
-                </td>
-              </tr>
+              <form action="/todo/edit" method="post" class="post_edit">
+                <tr>
+                  <td>
+                    {{$item->created_at}}
+                  </td>
+                  <td>
+                    <input type="text" class="input-update" value="{{$form->content}}" name="content">
+                  </td>
+                  <td>
+                    <input type="submit" class="button-update">更新</button>
+                  </td>
+                  <td>
+                    <button class="button-delete">削除</button>
+                  </td>
+                </tr>
+              </form>  
               @endforeach
             </tbody>
           </table>
