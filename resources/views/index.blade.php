@@ -38,7 +38,6 @@
                 </form>
                 <td>
                   <button class="button-delete">削除</button>
-                  </form>
                 </td>
               </tr>
               @endforeach
