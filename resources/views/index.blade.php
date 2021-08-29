@@ -260,11 +260,14 @@
                   <td>
                       <button class="button-update" type="submit">更新</button>
                   </td>
+                    <input type="hidden" name="id" value="{{$item->id}}">
                 </form>
                 <form action="/todo/delete" method="post">
                   <td>
+                    @csrf
                     <button class="button-delete">削除</button>
                   </td>
+                  <input type="hidden" name="id" value="{{$item->id}}">
                 </form>
               </tr>
               @endforeach
