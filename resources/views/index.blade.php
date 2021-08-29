@@ -26,15 +26,16 @@
                 <td>
                   {{$item->created_at}}
                 </td>
-                <td>
-                  <input type="text" class="input-update" value="{{$item->content}}" name="content">
-                </td>
-                <td>
-                  <form action="/todo/update" method="post">
-                  @csrf
-                    <button class="button-update" type="submit" action="/todo/update">更新</button>
-                  </form>
-                </td>
+                
+                <form action="/todo/update" method="POST">               
+                  <td>
+                    @csrf
+                    <input type="text" class="input-update" value="{{$item->content}}" name="content">
+                  </td>
+                  <td>
+                      <button class="button-update" type="submit">更新</button>
+                  </td>
+                </form>
                 <td>
                   <button class="button-delete">削除</button>
                   </form>
