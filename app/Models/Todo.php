@@ -10,8 +10,4 @@ class Todo extends Model
     use HasFactory;
 
     protected $fillable = ['content','created_at','updated_at'];
-
-    public static $rules =array(
-        'content' =>'required|min:1|max:191',
-    );
 }
